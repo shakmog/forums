@@ -1,0 +1,23 @@
+{% extends base_template %}
+{% block content %}
+<h3>Find a user</h3>
+<p>Users</p>
+Display name or login  <input type = 'search' results = "0" placeholder = "Search">
+<p>{{count}} users</p>vio
+<a href="">Previous</a>
+<a href="">Next</a>
+<table>
+	<tr>
+		<td>Name/login</td>
+		<td>Website</td>
+		<td>Posts</td>
+	</tr>
+	{% for u in users %}
+	<tr>
+		<td>{{u.username}}</td>
+		<td></td>
+		<td>{{u.post_count}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% endblock %}

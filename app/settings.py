@@ -26,17 +26,19 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+AUTH_USER_MODEL = 'users.User'
 
 # Application definition
 
 INSTALLED_APPS = (
-    'forums',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'forums',
+    'users',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -48,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'forums.middleware.ajax',
 )
 
 ROOT_URLCONF = 'app.urls'
@@ -61,9 +64,9 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'forums_development',
-        'USER': 'shak',
-        'PASSWORD': '',
+        'NAME': 'forums',
+        'USER': 'devin',
+        'PASSWORD': 'Tr#1wc6733',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

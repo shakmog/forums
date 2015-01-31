@@ -1,12 +1,29 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title></title>
+		<!-- Twitter Bootstrap -->        
+        <link media="all" type="text/css" rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+        <link media="all" type="text/css" rel="stylesheet" href="{% static "css/styles.css" %}">
+        <script src="{% static "js/index.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
 	</head>
 	<body>
+		<div class = "container">
 		{% block header %}
-		<h1> Hello Devin </h1>
-		{% endblock %}
-		{% block content %}
-		{% endblock %}
+			<div class = "row">
+				<nav class = "nav-cstm">
+					<a href="/forums">Forums</a>
+					<a href={% url "user_view" %}>Users</a>
+					<a href="/forums/search">Search</a>
+					<a href={% url "signup" %}>Signup</a>
+					<a href={% url "login" %}>Login</a>
+				</nav>
+				<hr class="col-xs-8 nav-hr">
+			</div>
+			{% endblock %}
+			{% block content %}
+			{% endblock %}
+		</div>
 	</body>
 </html>
