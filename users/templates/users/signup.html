@@ -1,0 +1,9 @@
+{% extends base_template %}
+{% block content %}
+<h2>Signup</h2>
+<form action = "/users/signup" method = "POST" >
+	{{form.as_p}}
+	{%csrf_token%}
+	<input type = "submit" value = "Signup">
+</form>
+{% endblock %}

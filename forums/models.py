@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import User
 # Create your models here.
+
 class Forums( models.Model ):
 	name = models.CharField(max_length=100)
 	description = models.CharField(max_length=150)
@@ -11,6 +12,7 @@ class Forums( models.Model ):
 	updated_at = models.DateTimeField(auto_now = True)
 
 class Threads( models.Model ):
+	sticky = models.BooleanField( default=False)
 	forum = models.ForeignKey(Forums)
 	user = models.ForeignKey(User)
 	last_post_id = models.IntegerField( default = 0 )

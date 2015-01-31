@@ -1,0 +1,53 @@
+{% extends base_template %}
+{% block content %}
+{% if user.is_authenticated %}
+<p>Hello {{user}}!</p>
+{% endif %}
+<h4>Forums</h4>
+<p>{{threads_count}} threads, {{posts_count}} posts</p>
+<a href="" class = "create_forum" data-toggle = "modal" data-target="#myModal">Create A Forum</a>
+<div class = 'row'>
+	<div class = "col-xs-6 table-head">
+		Forum
+	</div>
+	<div class = "col-xs-2 table-head">
+		Last Post
+	</div>
+</div>
+{% for forum in forums %}
+<div class = 'row'>
+	<div class = "col-xs-6">
+		<a href="">{{forum.name}}</a>
+		<p>{{forum.topic_count}} topics, {{forum.post_count}} posts</p>
+		<p>{{forum.description}}</p>
+	</div>
+	<div class = "col-xs-2">
+		Last Post Info
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Create Forum</h4>
+      </div>
+      <div class="modal-body">
+       	<form id ="edit-form">
+			{% csrf_token %}
+			<p><label for = 'name'>Name</label>
+			<input class = 'name-input' type = 'text' name = 'name' ></p>
+			<p><label for = 'description'>Description</label>
+			<input type = 'text' class = 'description-input' name = 'description'></p>
+			<p><input type = 'submit' value = 'Submit'></p>
+		</form>
+      </div>
+      <div class="modal-footer">
+<!--         <button type="button" class="btn btn-primary">Save changes</button>
+ -->      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
